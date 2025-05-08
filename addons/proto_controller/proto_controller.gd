@@ -23,7 +23,6 @@ extends CharacterBody3D
 @export var input_back : String = "ui_down"
 ## Name of Input Action to Jump.
 
-var mouse_captured : bool = false
 var look_rotation : Vector2
 var move_speed : float = 0.0
 var freeflying : bool = true
@@ -38,8 +37,12 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Mouse capturing
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and event is InputEventMouseMotion:
-		rotate_look(event.relative)
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if event is InputEventMouseMotion:
+			rotate_look(event.relative)
+		capture_mouse()
+	else:
+		release_mouse()
 	if Input.is_key_pressed(KEY_ESCAPE):
 		release_mouse()
 
@@ -56,20 +59,14 @@ func _physics_process(delta: float) -> void:
 ## Base of controller rotates around y (left/right). Head rotates around x (up/down).
 ## Modifies look_rotation based on rot_input, then resets basis and rotates by look_rotation.
 func rotate_look(rot_input : Vector2):
-	#look_rotation.x -= rot_input.y * look_speed
-	#look_rotation.x = clamp(look_rotation.x, deg_to_rad(-85), deg_to_rad(85))
 	look_rotation.y -= rot_input.x * look_speed
 	transform.basis = Basis()
 	rotate_y(look_rotation.y)
-	head.transform.basis = Basis()
-	#head.rotate_x(look_rotation.x)
 	
 
 func capture_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	mouse_captured = true
 
 
 func release_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	mouse_captured = false
