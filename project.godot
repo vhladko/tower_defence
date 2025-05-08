@@ -15,6 +15,10 @@ run/main_scene="uid://p0qdox26gotr"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[global_group]
+
+building_area="group of nodes where you can build stuff"
+
 [input]
 
 move_left={

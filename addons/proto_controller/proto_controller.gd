@@ -32,7 +32,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Захват мыши при нажатии
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MIDDLE:
 		if event.pressed:
 			capture_mouse()
 		else:
