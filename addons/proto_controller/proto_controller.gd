@@ -22,6 +22,9 @@ extends CharacterBody3D
 ## Name of Input Action to move Backward.
 @export var input_back : String = "ui_down"
 ## Name of Input Action to Jump.
+@export var zoom_out : String = "zoom_out"
+
+@export var zoom_in	: String = "zoom_in"
 
 var look_rotation : Vector2
 var move_speed : float = 0.0
@@ -43,8 +46,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		capture_mouse()
 	else:
 		release_mouse()
-	if Input.is_key_pressed(KEY_ESCAPE):
-		release_mouse()
+
+	if Input.is_action_pressed(zoom_in):
+		handle_zoom_in()
+	if Input.is_action_just_pressed(zoom_out):
+		handle_zoom_out()
 
 
 func _physics_process(delta: float) -> void:
@@ -54,6 +60,15 @@ func _physics_process(delta: float) -> void:
 	motion *= base_speed * delta
 	move_and_collide(motion)
 	return
+	
+func handle_zoom_out() -> void:
+	var motion := (head.global_basis * Vector3(0, look_speed, 0)).normalized()
+	move_and_collide(motion)
+	return
+	
+func handle_zoom_in() -> void:
+	var motion := (head.global_basis * Vector3(0, -look_speed, 0)).normalized()
+	move_and_collide(motion)
 
 ## Rotate us to look around.
 ## Base of controller rotates around y (left/right). Head rotates around x (up/down).
