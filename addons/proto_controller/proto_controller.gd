@@ -33,19 +33,23 @@ var freeflying : bool = true
 ## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
+@onready var mousePosition: Vector2 = get_viewport().get_mouse_position()
 
 func _ready() -> void:
 	look_rotation.y = rotation.y
 	look_rotation.x = head.rotation.x
 
 func _unhandled_input(event: InputEvent) -> void:
-	# Mouse capturing
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		if event is InputEventMouseMotion:
-			rotate_look(event.relative)
-		capture_mouse()
-	else:
-		release_mouse()
+	# Захват мыши при нажатии
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			capture_mouse()
+		else:
+			release_mouse()
+	
+	# Обработка движения мыши
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED and event is InputEventMouseMotion:
+		rotate_look(event.relative)
 
 	if Input.is_action_pressed(zoom_in):
 		handle_zoom_in()
@@ -80,8 +84,10 @@ func rotate_look(rot_input : Vector2):
 	
 
 func capture_mouse():
+	mousePosition = get_viewport().get_mouse_position()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func release_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Input.warp_mouse(mousePosition)
