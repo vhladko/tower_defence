@@ -6,31 +6,22 @@
 extends CharacterBody3D
 
 @export_group("Speeds")
-## Look around rotation speed.
 @export var look_speed : float = 0.002
-## Normal speed.
 @export var base_speed : float = 25.0
 
 
 @export_group("Input Actions")
-## Name of Input Action to move Left.
 @export var input_left : String = "ui_left"
-## Name of Input Action to move Right.
 @export var input_right : String = "ui_right"
-## Name of Input Action to move Forward.
 @export var input_forward : String = "ui_up"
-## Name of Input Action to move Backward.
 @export var input_back : String = "ui_down"
-## Name of Input Action to Jump.
 @export var zoom_out : String = "zoom_out"
-
 @export var zoom_in	: String = "zoom_in"
 
 var look_rotation : Vector2
 var move_speed : float = 0.0
 var freeflying : bool = true
 
-## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
 @onready var mousePosition: Vector2 = get_viewport().get_mouse_position()
@@ -58,7 +49,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# If freeflying, handle freefly and nothing else
 	var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
 	var motion := (head.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	motion *= base_speed * delta
@@ -66,21 +56,27 @@ func _physics_process(delta: float) -> void:
 	return
 	
 func handle_zoom_out() -> void:
+	var next_y = position.y + look_speed
+	if next_y > 50:
+		return
 	var motion := (head.global_basis * Vector3(0, look_speed, 0)).normalized()
 	move_and_collide(motion)
 	return
 	
 func handle_zoom_in() -> void:
+	var next_y = position.y -look_speed
+
+	if next_y < 10:
+		return;
 	var motion := (head.global_basis * Vector3(0, -look_speed, 0)).normalized()
 	move_and_collide(motion)
+	return
 
-## Rotate us to look around.
-## Base of controller rotates around y (left/right). Head rotates around x (up/down).
-## Modifies look_rotation based on rot_input, then resets basis and rotates by look_rotation.
 func rotate_look(rot_input : Vector2):
 	look_rotation.y -= rot_input.x * look_speed
 	transform.basis = Basis()
 	rotate_y(look_rotation.y)
+	return
 	
 
 func capture_mouse():
