@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://p0qdox26gotr"]
+
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://c8640borlafwr" path="res://enemy.gd" id="2_0xm2m"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ig7tw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0xm2m"]
+
+[sub_resource type="Curve3D" id="Curve3D_0xm2m"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="main" type="Node3D"]
+
+[node name="floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.62061, -0.0299911, 0.0130234)
+use_collision = true
+size = Vector3(50, 0.1, 10)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.796625, 0.604474, 0, -0.604474, 0.796625, 0, 4.79179, 2.96997)
+
+[node name="ProtoController" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95284, 8.5997, 0.153399)
+
+[node name="Enemy" type="CharacterBody3D" parent="." node_paths=PackedStringArray("pathFollow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0812, 3.38027, 0)
+script = ExtResource("2_0xm2m")
+pathFollow = NodePath("../Path3D/PathFollow3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy"]
+shape = SubResource("CapsuleShape3D_ig7tw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy"]
+mesh = SubResource("CapsuleMesh_0xm2m")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.11584, 0.925124, 0)
+curve = SubResource("Curve3D_0xm2m")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, 0)
+progress = 6.0

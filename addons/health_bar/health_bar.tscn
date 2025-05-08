@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0n1t7k75rbil"]
+
+[ext_resource type="Script" uid="uid://bxt73g80jp1x0" path="res://addons/health_bar/health_bar.gd" id="1_10m8s"]
+
+[node name="HealthBar" type="Node2D" node_paths=PackedStringArray("healthBarProgress")]
+script = ExtResource("1_10m8s")
+healthBarProgress = NodePath("ProgressBar")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -58.0
+offset_right = 56.0
+offset_bottom = 27.0
