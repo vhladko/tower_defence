@@ -1,13 +1,16 @@
-[gd_scene format=3 uid="uid://p0qdox26gotr"]
+[gd_scene load_steps=2 format=3 uid="uid://p0qdox26gotr"]
+
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_ig7tw"]
 
 [node name="main" type="Node3D"]
 
 [node name="floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23444, 0, 0)
-size = Vector3(10, 0.1, 1)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.0482315, -0.55201, 0.832442, 0.0319298, 0.833838, 0.551086, -0.998326, 0, 0.0578428, 4.93726, 1.67076, 0)
+use_collision = true
+size = Vector3(50, 0.1, 10)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.796625, 0.604474, 0, -0.604474, 0.796625, 0, 4.79179, 2.96997)
+
+[node name="ProtoController" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95284, 8.5997, 0.153399)
