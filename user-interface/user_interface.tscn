@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuhc6vk3xfvhw"]
+
+[ext_resource type="Script" uid="uid://c6glalt022vsx" path="res://user-interface/user_interface.gd" id="1_vtc5d"]
+
+[node name="UserInterface" type="Node3D"]
+script = ExtResource("1_vtc5d")
