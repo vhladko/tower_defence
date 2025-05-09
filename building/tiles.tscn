@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cevawvpat6f6o"]
+
+[ext_resource type="PackedScene" uid="uid://vwt3pida7hlb" path="res://building/building_area.tscn" id="1_2oiep"]
+
+[node name="Tiles" type="Node3D"]
+
+[node name="BuildingArea" parent="." instance=ExtResource("1_2oiep")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0443639, -1.19209e-07, 0.00466561)
