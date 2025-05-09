@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://ccrmfor1ia7ph"]
+[gd_scene load_steps=6 format=4 uid="uid://ccrmfor1ia7ph"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rlkcl"]
 
@@ -34,6 +34,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8c4cy")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dnc73"]
+albedo_color = Color(1, 1, 0, 1)
+
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dnc73"]
 points = PackedVector3Array(0.0427235, 2.46546, 1.16807, 0.890453, -1.87736, 0.432746, -0.939953, -1.8772, 0.301973, 1.16804, 2.46546, -0.0272265, -1.08192, 2.46546, -0.449284, 0.301697, -1.87686, -0.940007, -0.668313, -1.84621, -0.733021, -0.221085, -1.878, 0.956037, 0.464776, 2.46546, -1.08214, -0.809974, 2.30944, 0.760367, 0.898296, -1.89596, -0.421011, 1.09763, 2.46546, 0.464568, 0.432723, -1.87734, 0.890469, -0.47885, 2.29203, -0.998144, -1.15256, 2.46546, 0.0427378, 1.09763, 2.46546, -0.449057, -0.942858, -1.88361, -0.287364, -0.287113, -1.88326, -0.942908, -0.0274671, 2.46546, -1.15256, -0.618628, -1.89545, 0.766226, 0.751269, 2.28477, 0.816055, -0.422168, 2.33296, 1.03348, 0.560484, -1.8661, -0.805085, 0.953095, -1.87157, 0.235882, -1.02382, 2.34549, 0.440429, -0.886632, -1.90552, 0.438464, -0.750516, 2.32577, -0.816558, 0.435264, 2.32015, 1.02728, 0.956038, -1.87806, -0.221081, 0.809915, -1.83881, 0.553257, 0.235659, -1.87161, 0.953139, -0.420848, -1.89616, 0.898405)
 
@@ -43,6 +46,7 @@ points = PackedVector3Array(0.0427235, 2.46546, 1.16807, 0.890453, -1.87736, 0.4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 mesh = SubResource("ArrayMesh_ct4n7")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_dnc73")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
