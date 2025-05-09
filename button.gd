@@ -2,6 +2,7 @@ extends Button
 @export var building: PackedScene
 @export var building_icon: Texture2D
 @export var main: Node3D
+@export var meshLibrary: MeshLibrary
 
 var _is_dragging: bool = false
 var _building_instance: Node3D
