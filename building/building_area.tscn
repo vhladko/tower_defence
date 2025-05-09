@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://vwt3pida7hlb"]
+[gd_scene load_steps=5 format=3 uid="uid://vwt3pida7hlb"]
 
 [ext_resource type="Script" uid="uid://cenhte0tvss3n" path="res://building/building_area.gd" id="1_2rnn6"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2rnn6"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 1, 0, 1)
+grow = true
+grow_amount = 0.05
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_2rnn6"]
+material = SubResource("StandardMaterial3D_2rnn6")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_no0sc"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)

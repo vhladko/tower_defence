@@ -1,6 +1,7 @@
 extends Button
 @export var building: PackedScene
 @export var building_icon: Texture2D
+@export var main: Node3D
 
 var _is_dragging: bool = false
 var _building_instance: Node3D
@@ -24,6 +25,9 @@ func _on_button_down():
 func _on_button_up():
 	_is_dragging = false
 	_building_instance.visible = false
+	var new_build = building.instantiate()
+	new_build.global_position = _last_valid_location
+	main.add_child(new_build)
 
 func _physics_process(_delta):
 	if _is_dragging:
@@ -36,17 +40,14 @@ func _physics_process(_delta):
 		query.collide_with_bodies = true
 		query.collision_mask = 2
 		var ray_result = space_state.intersect_ray(query)
-		print(ray_result)
 		if ray_result.size() > 0:
 			_building_instance.visible = true
 			var col = ray_result.get('collider')
-			print(col)
-			var current_position = Vector3(col.global_position.x, 0.2, col.global_position.z)
-			_building_instance.global_position = current_position
-			var groups = col.get_groups()
-			if groups.size() == 0:
-				return
-			if groups[0] == 'building_area':
-				_last_valid_location = current_position
+			if col is GridMap:
+				var local_coords = col.local_to_map(ray_result.get("position"))
+				var global_coords = col.map_to_local(local_coords)
+				var used_cells = col.get_used_cells()
+				_building_instance.global_position = global_coords
+				_last_valid_location = global_coords
 		else:
 			_building_instance.global_position = Vector3(mouse_position.x, 0.2, mouse_position.y)
