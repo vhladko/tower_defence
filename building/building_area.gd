@@ -15,3 +15,7 @@ func get_cell_from_world(pos: Vector3) -> Vector2i:
 		int(floor(pos.x / cell_size)),
 		int(floor(pos.z / cell_size))
 	)
+
+func add_building(buildingPrefab: PackedScene) -> void:
+	var building = buildingPrefab.instantiate()
+	add_child(building)

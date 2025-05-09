@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://p0qdox26gotr"]
+[gd_scene load_steps=8 format=3 uid="uid://p0qdox26gotr"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://vwt3pida7hlb" path="res://building/building_area.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://j8p3cyyf2xr7" path="res://building/placement_controller.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dlc7y1hdgupqe" path="res://building/ghost_building.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bnh8qr14dp22m" path="res://addons/mob_spawner/mob_spawner.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bef5uwleuv332" path="res://building/building.tscn" id="6_7mycd"]
 
 [sub_resource type="Curve3D" id="Curve3D_0xm2m"]
 closed = true
@@ -38,7 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.1, 0, -2, -31)
 ghost_scene = ExtResource("4_lquwl")
 
 [node name="BuildingArea2" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.97988, 0, -7)
 
 [node name="BuildingArea3" parent="." instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -7)
@@ -48,3 +49,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -7)
 
 [node name="mob_spawner" parent="." node_paths=PackedStringArray("path") instance=ExtResource("5_lquwl")]
 path = NodePath("../Path3D")
+
+[node name="Bulding" parent="." instance=ExtResource("6_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5179, 0.318726, 0.566359)

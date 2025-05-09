@@ -1,6 +1,8 @@
 extends CharacterBody3D
+class_name Mob
 
 @export var healthBarPrefab: PackedScene;
+
 var healthBar: Node2D;
 
 var path: Path3D
@@ -40,14 +42,18 @@ func _physics_process(delta: float) -> void:
 
 func checkProgress() -> void:
 	var progressInPercent = pathFollow.progress_ratio * 100
-	if progressInPercent > 10.0:
-		die()
+	
 
 func move_by_path(delta: float) -> void:
 	global_transform.origin = pathFollow.global_transform.origin
 	pathFollow.progress += speed * delta
-	currentHitPoints = currentHitPoints - delta
 	updateHealthBarPosition()
+
+func get_hit(damage: float):
+	currentHitPoints -= damage
+	updateHealthBar()
+	if currentHitPoints <= 0:
+		die()
 	
 func die() ->void:
 	queue_free()
