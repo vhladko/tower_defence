@@ -33,7 +33,6 @@ script = ExtResource("6_7mycd")
 building = ExtResource("7_272bh")
 building_icon = SubResource("CanvasTexture_272bh")
 main = NodePath("../..")
-meshLibrary = ExtResource("5_7mycd")
 
 [node name="Bulding" parent="." instance=ExtResource("7_272bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.434, 0.686107, 2.86909)
