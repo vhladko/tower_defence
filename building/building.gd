@@ -5,6 +5,8 @@ class_name Building
 var bullet_speed: float = 5.0
 var bullet_damage: float = 10.0
 
+var is_ghost: bool = false
+
 var mobs_in_range = []
 var fire_rate: float = 1
 
@@ -16,7 +18,8 @@ func _ready() -> void:
 	timer.connect("timeout", _on_timer_timeout)
 
 func _on_timer_timeout():
-	attack()
+	if not is_ghost:
+		attack()
 
 func _on_attack_range_body_entered(body: Node3D) -> void:
 	if body.has_method("get_hit"):
@@ -37,7 +40,7 @@ func attack():
 		bullet.speed = bullet_speed
 		bullet.damage = bullet_damage
 		bullet.target = target
-		bullet.global_transform.origin = bullet.global_transform.origin + Vector3(0, 5, 0)
+		bullet.global_transform.origin = bullet.global_transform.origin + Vector3(0, 3, 0)
 		add_child(bullet)
 
 

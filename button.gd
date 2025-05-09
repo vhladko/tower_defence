@@ -14,6 +14,19 @@ var RAYCAST_LENGTH = 1000.0
 func _ready():
 	icon = building_icon
 	_building_instance = building.instantiate()
+	_building_instance.is_ghost = true
+	var _building_model = _building_instance.get_child(0)
+	var _building_mesh = _building_model.get_child(0)
+	if _building_mesh is MeshInstance3D:
+		var mat = _building_mesh.get_surface_override_material(0)
+		print(mat)
+		if mat == null:
+			mat = StandardMaterial3D.new()
+			_building_mesh.set_surface_override_material(0, mat)
+		mat.transparency = 0.5
+		mat.albedo_color.a = 0.5 
+		mat.transparent = true
+			
 	add_child(_building_instance)
 	_building_instance.visible = false
 	_cam = get_viewport().get_camera_3d()

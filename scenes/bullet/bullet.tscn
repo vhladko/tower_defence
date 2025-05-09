@@ -7,11 +7,12 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_83itf"]
 material = SubResource("StandardMaterial3D_7c8un")
+radius = 0.2
+height = 0.4
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_eyi85"]
 
 [node name="Bullet" type="Area3D"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 script = ExtResource("1_7c8un")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
