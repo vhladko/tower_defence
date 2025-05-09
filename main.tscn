@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://vwt3pida7hlb" path="res://building/building_area.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bnh8qr14dp22m" path="res://addons/mob_spawner/mob_spawner.tscn" id="5_lquwl"]
-[ext_resource type="Script" uid="uid://bs484cuntdloo" path="res://button.gd" id="6_7mycd"]
+[ext_resource type="Script" path="res://button.gd" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://t64bo4gpt0vo" path="res://building/building.tscn" id="7_272bh"]
 
 [sub_resource type="Curve3D" id="Curve3D_0xm2m"]
@@ -66,7 +66,7 @@ building = ExtResource("7_272bh")
 building_icon = SubResource("CanvasTexture_272bh")
 
 [node name="Bulding" parent="." instance=ExtResource("7_272bh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58737, 0.0200089, 2.66011)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.434, 0.686107, 2.86909)
 
 [connection signal="button_down" from="Control/Button" to="Control/Button" method="_on_button_down"]
 [connection signal="button_up" from="Control/Button" to="Control/Button" method="_on_button_up"]
