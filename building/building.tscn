@@ -15,7 +15,7 @@ material = SubResource("StandardMaterial3D_pi4mk")
 [node name="Bulding" type="Node3D"]
 script = ExtResource("1_pi4mk")
 
-[node name="StaticBody3d" type="Area3D" parent="."]
+[node name="StaticBody3d" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -31,3 +31,6 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 1.00063, 0)
 shape = SubResource("SphereShape3D_pi4mk")
+
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
