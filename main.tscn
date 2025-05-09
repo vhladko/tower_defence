@@ -2,10 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://vwt3pida7hlb" path="res://building/building_area.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://j8p3cyyf2xr7" path="res://building/placement_controller.tscn" id="3_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://dlc7y1hdgupqe" path="res://building/ghost_building.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bnh8qr14dp22m" path="res://addons/mob_spawner/mob_spawner.tscn" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://bef5uwleuv332" path="res://building/building.tscn" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://bs484cuntdloo" path="res://button.gd" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://t64bo4gpt0vo" path="res://building/building.tscn" id="7_272bh"]
 
 [sub_resource type="Curve3D" id="Curve3D_0xm2m"]
 closed = true
@@ -14,6 +13,8 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_272bh"]
 
 [node name="main" type="Node3D"]
 
@@ -35,9 +36,6 @@ curve = SubResource("Curve3D_0xm2m")
 [node name="BuildingArea" parent="." instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.1, 0, -2, -31)
 
-[node name="PlacementController" parent="." instance=ExtResource("3_1bvp3")]
-ghost_scene = ExtResource("4_lquwl")
-
 [node name="BuildingArea2" parent="." instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.97988, 0, -7)
 
@@ -50,5 +48,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -7)
 [node name="mob_spawner" parent="." node_paths=PackedStringArray("path") instance=ExtResource("5_lquwl")]
 path = NodePath("../Path3D")
 
-[node name="Bulding" parent="." instance=ExtResource("6_7mycd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5179, 0.318726, 0.566359)
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 18.0
+offset_right = 160.0
+offset_bottom = 49.0
+text = "Place Tower"
+script = ExtResource("6_7mycd")
+building = ExtResource("7_272bh")
+building_icon = SubResource("CanvasTexture_272bh")
+
+[node name="Bulding" parent="." instance=ExtResource("7_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58737, 0.0200089, 2.66011)
+
+[connection signal="button_down" from="Control/Button" to="Control/Button" method="_on_button_down"]
+[connection signal="button_up" from="Control/Button" to="Control/Button" method="_on_button_up"]

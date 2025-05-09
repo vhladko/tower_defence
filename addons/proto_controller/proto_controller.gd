@@ -87,3 +87,7 @@ func capture_mouse():
 func release_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	Input.warp_mouse(mousePosition)
+
+
+func _on_button_button_down():
+	pass # Replace with function body.
