@@ -32,15 +32,12 @@ func _physics_process(_delta):
 		var origin = _cam.project_ray_origin(mouse_position)
 		var end = origin + _cam.project_ray_normal(mouse_position) * RAYCAST_LENGTH
 		var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(origin, end)
-		query.collide_with_areas = true
 		query.collide_with_bodies = true
 		query.collision_mask = 2
 		var ray_result = space_state.intersect_ray(query)
-		print(ray_result)
 		if ray_result.size() > 0:
 			_building_instance.visible = true
 			var col = ray_result.get('collider')
-			print(col)
 			var current_position = Vector3(col.global_position.x, 0.2, col.global_position.z)
 			_building_instance.global_position = current_position
 			var groups = col.get_groups()
