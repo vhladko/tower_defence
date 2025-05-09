@@ -1,19 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://p0qdox26gotr"]
+[gd_scene load_steps=7 format=3 uid="uid://p0qdox26gotr"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://vwt3pida7hlb" path="res://building/building_area.tscn" id="2_0xm2m"]
-[ext_resource type="MeshLibrary" uid="uid://b8p7i87h3waoi" path="res://building_slot.tres" id="5_7mycd"]
-[ext_resource type="PackedScene" uid="uid://bnh8qr14dp22m" path="res://addons/mob_spawner/mob_spawner.tscn" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://bs484cuntdloo" path="res://button.gd" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://4jjefy57i3tl" path="res://Map.tscn" id="6_272bh"]
 [ext_resource type="PackedScene" uid="uid://t64bo4gpt0vo" path="res://building/building.tscn" id="7_272bh"]
-
-[sub_resource type="Curve3D" id="Curve3D_0xm2m"]
-closed = true
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 1.82345, 0, 0, 0, 0, 0, 0, 13.4984, 1, 0.00179482, 0, 0, 0, 0, 0, 0, 1.65027, 1, -0.957132),
-"tilts": PackedFloat32Array(0, 0, 0)
-}
-point_count = 3
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_272bh"]
 
@@ -23,14 +14,7 @@ point_count = 3
 transform = Transform3D(1, 0, 0, 0, 0.796625, 0.604474, 0, -0.604474, 0.796625, 0, 4.79179, 2.96997)
 
 [node name="ProtoController" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50679, 8.5997, 10.4138)
-
-[node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.46299, -0.074876, 0.386)
-curve = SubResource("Curve3D_0xm2m")
-
-[node name="mob_spawner" parent="." node_paths=PackedStringArray("path") instance=ExtResource("5_lquwl")]
-path = NodePath("../Path3D")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50679, 5.83913, 13.5478)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -54,18 +38,11 @@ meshLibrary = ExtResource("5_7mycd")
 [node name="Bulding" parent="." instance=ExtResource("7_272bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.434, 0.686107, 2.86909)
 
-[node name="GridMap" type="GridMap" parent="."]
-physics_interpolation_mode = 1
-mesh_library = ExtResource("5_7mycd")
-cell_size = Vector3(2, 1, 2)
-collision_layer = 3
-data = {
-"cells": PackedInt32Array(0, 0, 1441792, 1, 0, 1441792, 1, 1, 1441792, 0, 1, 1441792, 2, 0, 1441792, 2, 1, 1441792, 2, 65535, 1441792, 3, 65535, 1441792, 3, 0, 1441792, 3, 1, 1441792, 4, 1, 1441792, 4, 0, 1441792, 4, 65535, 1441792, 5, 65535, 1441792, 5, 0, 1441792, 5, 1, 1441792, 6, 1, 1441792, 6, 0, 1441792, 6, 65535, 1441792, 7, 65535, 1441792, 7, 0, 1441792, 7, 1, 1441792, 8, 1, 1441792, 8, 0, 1441792, 8, 65535, 1441792, 9, 65535, 1441792, 9, 0, 1441792, 9, 1, 1441792, 10, 1, 1441792, 10, 0, 1441792, 10, 65535, 1441792, 0, 65535, 1441792, 1, 65535, 1441792, 0, 2, 1441792, 1, 2, 1441792, 2, 2, 1441792, 3, 2, 1441792, 4, 2, 1441792, 5, 2, 1441792, 6, 2, 1441792, 7, 2, 1441792, 8, 2, 1441792, 9, 2, 1441792, 10, 2, 1441792, 65535, 65535, 1441792, 65535, 0, 0, 65535, 1, 1441792, 65535, 2, 1441792, 65534, 2, 1441792, 65533, 2, 1441792, 65532, 2, 1441792, 65531, 2, 1441792, 65530, 2, 1441792, 65529, 2, 1441792, 65529, 1, 1441792, 65529, 0, 1441792, 65529, 65535, 1441792, 65530, 65535, 1441792, 65531, 65535, 1441792, 65532, 65535, 1441792, 65533, 65535, 1441792, 65534, 65535, 1441792, 65534, 0, 1441792, 65534, 1, 1441792, 65532, 1, 1441792, 65531, 1, 1441792, 65530, 1, 1441792, 65530, 0, 1441792, 65531, 0, 1441792, 65532, 0, 1441792, 65533, 0, 1441792, 65533, 1, 1441792, 11, 65535, 1441792, 11, 0, 1441792, 11, 1, 1441792, 11, 2, 1441792, 12, 2, 1441792, 12, 1, 1441792, 12, 0, 1441792, 12, 65535, 1441792, 13, 2, 0, 13, 1, 0, 13, 0, 0, 13, 65535, 0, 14, 65535, 0, 14, 0, 0, 14, 1, 0, 14, 2, 0, 15, 2, 0, 15, 1, 0, 15, 0, 0, 15, 65535, 0, 16, 65535, 0, 16, 0, 0, 16, 1, 0, 16, 2, 0, 17, 2, 0, 17, 1, 0, 17, 0, 0, 17, 65535, 0, 65532, 5, 0, 65533, 5, 0, 65533, 4, 0, 65532, 4, 0, 65532, 6, 0, 65533, 6, 0, 65533, 3, 0, 65532, 3, 0, 65534, 3, 0, 65534, 4, 0, 65534, 5, 0, 65534, 6, 0, 65532, 7, 0, 65531, 7, 0, 65531, 6, 0, 65531, 5, 0, 65530, 5, 0, 65530, 6, 0, 65533, 7, 0, 65531, 4, 0, 65530, 4, 0, 65530, 3, 0, 65531, 3, 0, 65535, 3, 0, 65535, 4, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 65535, 6, 0, 65535, 5, 0, 0, 3, 0, 65534, 7, 0, 65535, 7, 0, 0, 7, 0, 65532, 8, 0, 65533, 8, 0, 65534, 8, 0, 65535, 8, 0, 65530, 7, 0, 65529, 6, 0)
-}
-
 [node name="BuildingArea" parent="." instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3928, 1.94877, 8.01116)
 layers = 3
+
+[node name="Map" parent="." instance=ExtResource("6_272bh")]
 
 [connection signal="button_down" from="Control/Button" to="Control/Button" method="_on_button_down"]
 [connection signal="button_up" from="Control/Button" to="Control/Button" method="_on_button_up"]

@@ -43,8 +43,11 @@ func _physics_process(_delta):
 		if ray_result.size() > 0:
 			_building_instance.visible = true
 			var col = ray_result.get('collider')
+			print(col)
 			if col is GridMap:
 				var local_coords = col.local_to_map(ray_result.get("position"))
+				# var item = col.get_cell_item(local_coords)
+				# print(item)
 				var global_coords = col.map_to_local(local_coords)
 				_building_instance.global_position = global_coords
 				_last_valid_location = global_coords

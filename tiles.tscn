@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://dp7rq1bbuompc"]
+
+[ext_resource type="PackedScene" uid="uid://y6o17w8ncqeb" path="res://assets/tile.glb" id="1_7h0kd"]
+[ext_resource type="PackedScene" uid="uid://bhh8ga6nb1geh" path="res://assets/tile-corner-square.glb" id="1_341ea"]
+[ext_resource type="PackedScene" uid="uid://pt8ay03j7cb0" path="res://assets/tile-end.glb" id="2_srh3t"]
+[ext_resource type="PackedScene" uid="uid://c2vv6ku2kd78f" path="res://assets/tile-rock.glb" id="3_7osof"]
+[ext_resource type="PackedScene" uid="uid://b78xd5eimravi" path="res://assets/tile-split.glb" id="4_rnsht"]
+[ext_resource type="PackedScene" uid="uid://g6mp6sc0ab1" path="res://assets/tile-straight.glb" id="5_y1754"]
+[ext_resource type="PackedScene" uid="uid://djbl5q0ntht4q" path="res://assets/tile-tree.glb" id="6_endm6"]
+[ext_resource type="PackedScene" uid="uid://ntq4del88gpn" path="res://assets/tile-dirt.glb" id="8_srh3t"]
+
+[node name="Tiles" type="Node3D"]
+
+[node name="tile-corner-square" parent="." instance=ExtResource("1_341ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0457505, 0, -0.0370648)
+
+[node name="tile-end" parent="." instance=ExtResource("2_srh3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0457505, 0, -0.0370648)
+
+[node name="tile-rock" parent="." instance=ExtResource("3_7osof")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0457505, 0, -0.0370648)
+
+[node name="tile-split" parent="." instance=ExtResource("4_rnsht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0457505, 0, -0.0370648)
+
+[node name="tile-straight" parent="." instance=ExtResource("5_y1754")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0457505, 0, -0.0370648)
+
+[node name="tile-tree" parent="." instance=ExtResource("6_endm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0457505, 0, -0.0370648)
+
+[node name="tile" parent="." instance=ExtResource("1_7h0kd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0457505, 0, -0.0370648)
+
+[node name="tile-dirt" parent="." instance=ExtResource("8_srh3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0457505, 0, -0.0370648)
