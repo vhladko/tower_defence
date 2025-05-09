@@ -36,7 +36,6 @@ func _physics_process(_delta):
 		var origin = _cam.project_ray_origin(mouse_position)
 		var end = origin + _cam.project_ray_normal(mouse_position) * RAYCAST_LENGTH
 		var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(origin, end)
-		query.collide_with_areas = true
 		query.collide_with_bodies = true
 		query.collision_mask = 2
 		var ray_result = space_state.intersect_ray(query)
@@ -46,7 +45,6 @@ func _physics_process(_delta):
 			if col is GridMap:
 				var local_coords = col.local_to_map(ray_result.get("position"))
 				var global_coords = col.map_to_local(local_coords)
-				var used_cells = col.get_used_cells()
 				_building_instance.global_position = global_coords
 				_last_valid_location = global_coords
 		else:
