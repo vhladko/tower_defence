@@ -1,8 +1,11 @@
 extends Node3D
 class_name Building
 
+@export var bullet_prefab: PackedScene
+var bullet_speed: float = 5.0
+var bullet_damage: float = 10.0
+
 var mobs_in_range = []
-var damage: float = 10.0
 var fire_rate: float = 1
 
 func _ready() -> void:
@@ -30,7 +33,12 @@ func attack():
 	mobs_in_range.sort_custom(_sort_by_distance)
 	var target = mobs_in_range[0]
 	if is_instance_valid(target):
-		target.get_hit(damage)
+		var bullet = bullet_prefab.instantiate()
+		bullet.speed = bullet_speed
+		bullet.damage = bullet_damage
+		bullet.target = target
+		bullet.global_transform.origin = bullet.global_transform.origin + Vector3(0, 5, 0)
+		add_child(bullet)
 
 
 func _sort_by_distance(a, b):

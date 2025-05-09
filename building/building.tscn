@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://t64bo4gpt0vo"]
+[gd_scene load_steps=5 format=3 uid="uid://t64bo4gpt0vo"]
 
 [ext_resource type="Script" uid="uid://ctknn2hb273ot" path="res://building/building.gd" id="1_pi4mk"]
 [ext_resource type="PackedScene" uid="uid://ccrmfor1ia7ph" path="res://tower.tscn" id="2_e18bv"]
+[ext_resource type="PackedScene" uid="uid://c4j1wx8jfaikd" path="res://scenes/bullet/bullet.tscn" id="2_vgp2u"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pi4mk"]
 
 [node name="Bulding" type="Node3D"]
 script = ExtResource("1_pi4mk")
+bullet_prefab = ExtResource("2_vgp2u")
 
 [node name="tower" parent="." instance=ExtResource("2_e18bv")]
 
