@@ -15,6 +15,10 @@ run/main_scene="uid://p0qdox26gotr"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+State="*res://game_state.gd"
+
 [global_group]
 
 building_area="group of nodes where you can build stuff"
@@ -59,3 +63,4 @@ zoom_in={
 [layer_names]
 
 3d_navigation/layer_2="building_area"
+3d_physics/layer_3="Enemy"

@@ -4,6 +4,7 @@ class_name BaseMob
 @export var healthBarPrefab: PackedScene;
 @export var mob_data: MobData
 var healthBar: Node2D;
+var damage: int = 1
 
 var pathFollow: PathFollow3D
 
@@ -32,7 +33,7 @@ func init_path(path: Path3D) -> void:
 
 func update_health_bar_position() -> void:
 	var camera = get_viewport().get_camera_3d()
-	var screen_pos = camera.unproject_position(global_transform.origin + Vector3(0, 2, 0)) 
+	var screen_pos = camera.unproject_position(global_transform.origin + Vector3(0, 2, 0))
 	healthBar.global_position = screen_pos
 
 func updateHealthBar() -> void:
@@ -59,5 +60,5 @@ func get_hit(damage: float):
 	if current_hit_points <= 0:
 		die()
 	
-func die() ->void:
+func die() -> void:
 	queue_free()
