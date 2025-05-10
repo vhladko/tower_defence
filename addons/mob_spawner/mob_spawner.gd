@@ -2,6 +2,7 @@ extends Node3D
 class_name MobSpawner
 
 signal wave_spawn_finished
+signal wave_spawn_start
 
 @export var path: Path3D;
 
@@ -26,6 +27,7 @@ func init_wave(wave_data: WaveData) -> void:
 	delay_before_start_timer.autostart = true
 	add_child(delay_before_start_timer)
 	delay_before_start_timer.connect('timeout', start_spawn)
+	emit_signal("wave_spawn_start")
 
 
 func start_spawn() -> void:

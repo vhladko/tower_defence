@@ -6,13 +6,15 @@ extends Node3D
 @export var waves: Array[WaveData]
 
 var wave_index: int = 0;
+var wave_started_spawn_index: int = 0
 
 func _ready() -> void:
 	set_wave()
 
 func check_win():
 	var children = mob_spawner.get_children().filter(func(child): return child is BaseMob)
-	if children.size() == 0 && wave_index >= waves.size():
+	print(children.size(), wave_index, wave_started_spawn_index)
+	if children.size() == 0 && wave_index >= waves.size() && wave_started_spawn_index >= waves.size():
 		State.waves_finished()
 
 func _on_mob_spawner_wave_spawn_finished() -> void:
@@ -27,3 +29,7 @@ func set_wave() -> void:
 
 func _on_mob_spawner_child_order_changed():
 	check_win()
+
+
+func _on_mob_spawner_wave_spawn_start() -> void:
+	wave_started_spawn_index += 1

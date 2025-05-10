@@ -26,7 +26,7 @@ metadata/_custom_type_script = "uid://6xbfaxyuv8t0"
 [sub_resource type="Resource" id="Resource_vm4q1"]
 script = ExtResource("6_vm4q1")
 mobs_prefab = ExtResource("7_ud676")
-delay_before_start = 0.5
+delay_before_start = 5.0
 spawn_delay = 0.2
 spawn_amount = 2
 metadata/_custom_type_script = "uid://6xbfaxyuv8t0"
@@ -61,3 +61,4 @@ waves = Array[ExtResource("6_vm4q1")]([SubResource("Resource_0f2yp"), SubResourc
 
 [connection signal="child_order_changed" from="mob_spawner" to="WaveManager" method="_on_mob_spawner_child_order_changed"]
 [connection signal="wave_spawn_finished" from="mob_spawner" to="WaveManager" method="_on_mob_spawner_wave_spawn_finished"]
+[connection signal="wave_spawn_start" from="mob_spawner" to="WaveManager" method="_on_mob_spawner_wave_spawn_start"]
