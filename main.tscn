@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://4jjefy57i3tl" path="res://Map.tscn" id="6_272bh"]
 [ext_resource type="PackedScene" uid="uid://ck68t3usg454t" path="res://GameOver.tscn" id="7_5vw27"]
 [ext_resource type="PackedScene" uid="uid://t64bo4gpt0vo" path="res://building/building.tscn" id="7_272bh"]
-[ext_resource type="Script" path="res://game_over.gd" id="7_kek77"]
 [ext_resource type="PackedScene" uid="uid://dbk6septufuxv" path="res://GameWin.tscn" id="8_5vw27"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_272bh"]
