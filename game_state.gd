@@ -26,8 +26,9 @@ func _game_win():
 func _reset_state():
 	ui_mode = UI_MODES.GAME
 	user_hp = 100
-	gold = 0
-
+	gold = 0 
+	BuildManager.cancel_building()
+	
 func set_user_hp(hp: int) -> void:
 	if (hp <= 0):
 		user_hp = 0
@@ -43,3 +44,4 @@ func add_gold(gold_to_add: float) -> void:
 
 func waves_finished() -> void:
 	_game_win()
+	

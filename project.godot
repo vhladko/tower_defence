@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 State="*res://game_state.gd"
+BuildManager="*res://scenes/build_manager/build_manager.gd"
 
 [global_group]
 
