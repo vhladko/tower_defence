@@ -8,6 +8,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0xm2m"]
 
 [node name="Enemy" type="CharacterBody3D"]
+collision_layer = 5
 script = ExtResource("1_7uxwn")
 healthBarPrefab = ExtResource("2_71mp1")
 

@@ -1,12 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://p0qdox26gotr"]
+[gd_scene load_steps=11 format=3 uid="uid://p0qdox26gotr"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://vwt3pida7hlb" path="res://building/building_area.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://iiv2if27yq38" path="res://user_hp.gd" id="6_5vw27"]
 [ext_resource type="Script" uid="uid://bs484cuntdloo" path="res://button.gd" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://4jjefy57i3tl" path="res://Map.tscn" id="6_272bh"]
 [ext_resource type="PackedScene" uid="uid://t64bo4gpt0vo" path="res://building/building.tscn" id="7_272bh"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_272bh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
+bg_color = Color(0.964706, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_272bh"]
+bg_color = Color(0.267287, 0.712837, 7.70092e-07, 1)
+
+[sub_resource type="Theme" id="Theme_5vw27"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_7mycd")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_272bh")
 
 [node name="main" type="Node3D"]
 
@@ -42,6 +53,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3928, 1.94877, 8.01116)
 layers = 3
 
 [node name="Map" parent="." instance=ExtResource("6_272bh")]
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -195.5
+offset_right = 195.5
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Control2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -247.5
+offset_top = 20.0
+offset_right = 247.5
+offset_bottom = 47.0
+grow_horizontal = 2
+theme = SubResource("Theme_5vw27")
+show_percentage = false
+script = ExtResource("6_5vw27")
 
 [connection signal="button_down" from="Control/Button" to="Control/Button" method="_on_button_down"]
 [connection signal="button_up" from="Control/Button" to="Control/Button" method="_on_button_up"]

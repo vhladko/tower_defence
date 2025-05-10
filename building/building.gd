@@ -25,7 +25,6 @@ func _on_attack_range_body_entered(body: Node3D) -> void:
 	if body.has_method("get_hit"):
 		mobs_in_range.append(body);
 
-
 func _on_attack_range_body_exited(body: Node3D) -> void:
 	if body in mobs_in_range:
 		mobs_in_range.erase(body)

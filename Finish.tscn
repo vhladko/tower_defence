@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4a7d4opceky5"]
+
+[ext_resource type="Script" uid="uid://bucdefgauyxk0" path="res://finish.gd" id="1_ql43g"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6rmpd"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ql43g"]
+points = PackedVector3Array(1.01587, 0.015873, 1.01587, -1.01587, -0.015873, -1.01587, -1.01587, 0.015873, -1.01587, 1.01587, -0.015873, -1.01587, -1.01587, -0.015873, 1.01587, -1.01587, 0.015873, 1.01587, 1.01587, 0.015873, -1.01587, 1.01587, -0.015873, 1.01587)
+
+[node name="Finish" type="Area3D"]
+collision_mask = 4
+script = ExtResource("1_ql43g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_6rmpd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_ql43g")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
