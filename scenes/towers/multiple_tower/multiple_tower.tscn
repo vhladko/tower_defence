@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dcdqdc4uedhly"]
 
 [ext_resource type="Script" uid="uid://bl0ix4nov3eq3" path="res://scenes/towers/multiple_tower/multiple_tower.gd" id="1_qdcns"]
-[ext_resource type="PackedScene" uid="uid://c4j1wx8jfaikd" path="res://scenes/bullet/default_bullet.tscn" id="2_54174"]
+[ext_resource type="PackedScene" path="res://scenes/bullet/default_bullet.tscn" id="2_54174"]
 [ext_resource type="PackedScene" uid="uid://2bxeqeclsv2r" path="res://assets/tower.glb" id="2_qdcns"]
 [ext_resource type="Script" uid="uid://bshewrcjb2cd1" path="res://resources/building/building_data.gd" id="3_acmey"]
 
@@ -10,6 +10,7 @@ script = ExtResource("3_acmey")
 fire_rate = 0.5
 bullet_prefab = ExtResource("2_54174")
 attack_range_radius = 10.0
+cost = 25.0
 metadata/_custom_type_script = "uid://bshewrcjb2cd1"
 
 [node name="MultipleTower" type="Node3D"]
