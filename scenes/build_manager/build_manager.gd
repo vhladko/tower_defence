@@ -2,7 +2,7 @@ extends Node3D
 
 
 var _building: PackedScene
-var _building_instance: Node3D
+var _building_instance: BaseBuilding
 var _cam: Camera3D
 var _last_valid_location: Vector3
 var _last_valid_local_location: Vector3i
@@ -13,6 +13,7 @@ var RAYCAST_LENGTH = 1000.0
 
 
 func _start_building(building: PackedScene):
+	print('start building')
 	_building_instance = building.instantiate()
 	_building = building
 	State.set_ui_mode(State.UI_MODES.BUILDING)
@@ -36,13 +37,14 @@ func place_building():
 		new_build.global_position = _last_valid_location
 		_grid.add_child(new_build)
 		_grid.place_in_cell(_last_valid_local_location)
+		State.remove_gold(_building_instance.building_data.cost)
 
 func cancel_building():
 	State.set_ui_mode(State.UI_MODES.GAME)
 	_building_instance.queue_free()
 
 func _physics_process(_delta):
-	if State.get_ui_mode() == State.UI_MODES.BUILDING: 
+	if State.get_ui_mode() == State.UI_MODES.BUILDING:
 		var space_state = _building_instance.get_world_3d().direct_space_state
 		var mouse_position = get_viewport().get_mouse_position()
 		var origin = _cam.project_ray_origin(mouse_position)
@@ -64,12 +66,13 @@ func _physics_process(_delta):
 				_last_valid_local_location = local_coords
 				var is_good_for_placement = false
 				var item = col.get_cell_item(local_coords)
+				var has_enough_money = State.gold >= _building_instance.building_data.cost;
 				if item > 0:
 					var layers = col.mesh_library.get_item_navigation_layers(item)
 					var names = get_navigation_layer_name_from_mask(layers)
 					is_good_for_placement = names.filter(func(layout_name): return layout_name == 'building_area').size() > 0
 				
-				if col.is_cell_occupied(local_coords) || not is_good_for_placement:
+				if col.is_cell_occupied(local_coords) || not is_good_for_placement || not has_enough_money:
 					make_building_error()
 					_can_place = false
 				else:

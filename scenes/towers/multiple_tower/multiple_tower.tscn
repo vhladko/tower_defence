@@ -10,6 +10,7 @@ script = ExtResource("3_acmey")
 fire_rate = 0.5
 bullet_prefab = ExtResource("2_54174")
 attack_range_radius = 10.0
+cost = 25.0
 metadata/_custom_type_script = "uid://bshewrcjb2cd1"
 
 [node name="MultipleTower" type="Node3D"]

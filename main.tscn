@@ -1,13 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://p0qdox26gotr"]
+[gd_scene load_steps=15 format=3 uid="uid://p0qdox26gotr"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://vwt3pida7hlb" path="res://building/building_area.tscn" id="2_0xm2m"]
-[ext_resource type="Script" path="res://user_hp.gd" id="6_5vw27"]
+[ext_resource type="Script" uid="uid://iiv2if27yq38" path="res://user_hp.gd" id="6_5vw27"]
 [ext_resource type="Script" uid="uid://bs484cuntdloo" path="res://button.gd" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://4jjefy57i3tl" path="res://Map.tscn" id="6_272bh"]
-[ext_resource type="PackedScene" path="res://GameOver.tscn" id="7_5vw27"]
+[ext_resource type="PackedScene" uid="uid://ck68t3usg454t" path="res://GameOver.tscn" id="7_5vw27"]
 [ext_resource type="PackedScene" uid="uid://t64bo4gpt0vo" path="res://building/building.tscn" id="7_272bh"]
-[ext_resource type="PackedScene" path="res://GameWin.tscn" id="8_5vw27"]
+[ext_resource type="Script" uid="uid://duujh3366cfen" path="res://gold.gd" id="8_4c57u"]
+[ext_resource type="PackedScene" uid="uid://dbk6septufuxv" path="res://GameWin.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dcdqdc4uedhly" path="res://scenes/towers/multiple_tower/multiple_tower.tscn" id="9_kek77"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_272bh"]
@@ -31,6 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 0.796625, 0.604474, 0, -0.604474, 0.796625, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50679, 5.83913, 13.5478)
 
 [node name="Control" type="Control" parent="."]
+z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -42,7 +44,7 @@ offset_left = 59.0
 offset_top = 18.0
 offset_right = 160.0
 offset_bottom = 49.0
-text = "Place Tower"
+text = "Single Tower"
 script = ExtResource("6_7mycd")
 building = ExtResource("7_272bh")
 building_icon = SubResource("CanvasTexture_272bh")
@@ -53,7 +55,7 @@ offset_left = 60.0
 offset_top = 56.0
 offset_right = 161.0
 offset_bottom = 87.0
-text = "Place Tower"
+text = "Multiple Tower"
 script = ExtResource("6_7mycd")
 building = ExtResource("9_kek77")
 building_icon = SubResource("CanvasTexture_272bh")
@@ -69,9 +71,9 @@ layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -195.5
-offset_right = 195.5
-offset_bottom = 40.0
+offset_left = -378.0
+offset_right = 575.0
+offset_bottom = 67.0
 grow_horizontal = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="Control2"]
@@ -87,6 +89,20 @@ grow_horizontal = 2
 theme = SubResource("Theme_5vw27")
 show_percentage = false
 script = ExtResource("6_5vw27")
+
+[node name="Gold" type="Label" parent="Control2"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -112.0
+offset_top = 20.0
+offset_right = -26.0
+offset_bottom = 43.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "Gold"
+script = ExtResource("8_4c57u")
 
 [node name="GameOver" parent="." instance=ExtResource("7_5vw27")]
 
