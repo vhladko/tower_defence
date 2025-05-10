@@ -61,5 +61,10 @@ func get_hit(damage: float):
 	if current_hit_points <= 0:
 		die()
 	
+func finish() -> void:
+	queue_free()
+	
+	
 func die() -> void:
+	State.add_gold(reward)
 	queue_free()
