@@ -1,9 +1,15 @@
 extends Area3D
-class_name Bullet
+class_name BaseBullet
+
+@export var bullet_data: BulletData
 
 var speed: float
 var damage: float
 var target: Node3D
+
+func _ready() -> void:
+	speed = bullet_data.speed
+	damage = bullet_data.damage
 
 func _physics_process(delta: float) -> void:
 	if not is_instance_valid(target):
@@ -13,7 +19,10 @@ func _physics_process(delta: float) -> void:
 	global_transform.origin += direction * speed * delta
 	
 
+func set_target(new_target: Node3D) -> void:
+	target = new_target
+
 func _on_body_entered(body: Node3D) -> void:
-	if body == target and body.has_method("get_hit"):
+	if is_instance_valid(target) && body == target && body.has_method("get_hit"):
 		body.get_hit(damage)
 		queue_free()

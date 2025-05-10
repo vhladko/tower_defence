@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://4jjefy57i3tl"]
+[gd_scene load_steps=12 format=3 uid="uid://4jjefy57i3tl"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjr0vu6q0vswa" path="res://tiles.tres" id="1_gfjgm"]
 [ext_resource type="Script" uid="uid://cbx3htsbcmgh4" path="res://grid_map.gd" id="2_3h1ab"]
@@ -21,8 +21,16 @@ point_count = 10
 script = ExtResource("6_vm4q1")
 mobs_prefab = ExtResource("7_ud676")
 delay_before_start = 10.0
-spawn_delay = 0.1
+spawn_delay = 1.0
 spawn_amount = 10
+metadata/_custom_type_script = "uid://6xbfaxyuv8t0"
+
+[sub_resource type="Resource" id="Resource_0f2yp"]
+script = ExtResource("6_vm4q1")
+mobs_prefab = ExtResource("7_ud676")
+delay_before_start = 5.0
+spawn_delay = 1.0
+spawn_amount = 3
 metadata/_custom_type_script = "uid://6xbfaxyuv8t0"
 
 [node name="Map" type="Node3D"]
@@ -54,6 +62,6 @@ visible = false
 
 [node name="WaveManager" parent="." node_paths=PackedStringArray("mob_spawner") instance=ExtResource("5_0f2yp")]
 mob_spawner = NodePath("../mob_spawner")
-waves = Array[ExtResource("6_vm4q1")]([SubResource("Resource_6f7pb")])
+waves = Array[ExtResource("6_vm4q1")]([SubResource("Resource_6f7pb"), SubResource("Resource_0f2yp")])
 
 [connection signal="wave_spawn_finished" from="mob_spawner" to="WaveManager" method="_on_mob_spawner_wave_spawn_finished"]

@@ -42,12 +42,8 @@ func updateHealthBar() -> void:
 
 func _physics_process(delta: float) -> void:
 	move_by_path(delta)
-	checkProgress()
 	updateHealthBar()
 	return
-
-func checkProgress() -> void:
-	var progressInPercent = pathFollow.progress_ratio * 100
 	
 
 func move_by_path(delta: float) -> void:

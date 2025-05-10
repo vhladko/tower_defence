@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_ibsro"]
 script = ExtResource("3_uaxkl")
 health = 100.0
-speed = 20.0
+speed = 5.0
 reward = 10.0
 damage = 10
 metadata/_custom_type_script = "uid://dqj4v33r2al6t"
