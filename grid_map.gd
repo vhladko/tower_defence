@@ -1,5 +1,9 @@
 extends GridMap
 
-func _ready():
-	var mesh = mesh_library.get_item_navigation_layers(1)
-	print(mesh)
+var occupied_cells := {}
+
+func place_in_cell(cell: Vector3i) -> void:
+	occupied_cells[cell] = true
+
+func is_cell_occupied(cell: Vector3i) -> bool:
+	return occupied_cells.has(cell)

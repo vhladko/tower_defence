@@ -7,6 +7,9 @@ var _is_dragging: bool = false
 var _building_instance: Node3D
 var _cam: Camera3D
 var _last_valid_location: Vector3
+var _last_valid_local_location: Vector3i
+var _grid: GridMap
+var _can_place: bool
 
 var RAYCAST_LENGTH = 1000.0
 
@@ -23,15 +26,16 @@ func _ready():
 
 func _on_button_down():
 	_is_dragging = true
-	make_building_transparent()
 
 
 func _on_button_up():
 	_is_dragging = false
 	_building_instance.visible = false
-	var new_build = building.instantiate()
-	new_build.global_position = _last_valid_location
-	main.add_child(new_build)
+	if _can_place:
+		var new_build = building.instantiate()
+		new_build.global_position = _last_valid_location
+		_grid.add_child(new_build)
+		_grid.place_in_cell(_last_valid_local_location)
 
 func _physics_process(_delta):
 	if _is_dragging:
@@ -47,14 +51,26 @@ func _physics_process(_delta):
 			_building_instance.visible = true
 			var col = ray_result.get('collider')
 			if col is GridMap:
+				clear_texture_override()
+				_grid = col
 				var local_coords = col.local_to_map(ray_result.get("position"))
 				var global_coords = col.map_to_local(local_coords)
-				var item = col.get_cell_item(local_coords)
 				_building_instance.global_position = global_coords
 				_last_valid_location = global_coords
+				_last_valid_local_location = local_coords
+				var is_good_for_placement = false
+				var item = col.get_cell_item(local_coords)
 				if item > 0:
 					var layers = col.mesh_library.get_item_navigation_layers(item)
 					var names = get_navigation_layer_name_from_mask(layers)
+					is_good_for_placement = names.filter(func(layout_name): return layout_name == 'building_area').size() > 0
+				
+				if col.is_cell_occupied(local_coords) || not is_good_for_placement:
+					make_building_error()
+					_can_place = false
+				else:
+					make_building_transparent()
+					_can_place = true
 
 		else:
 			_building_instance.global_position = Vector3(mouse_position.x, 0.2, mouse_position.y)
@@ -70,6 +86,12 @@ func get_navigation_layer_name_from_mask(mask: int) -> Array:
 				layer_name = "Layer %d" % layer_idx
 			names.append(layer_name)
 	return names
+
+func clear_texture_override():
+	var _building_model = _building_instance.get_child(0)
+	var _building_mesh = _building_model.get_child(0)
+	if _building_mesh is MeshInstance3D:
+		_building_mesh.set_surface_override_material(0, null)
 
 func make_building_transparent():
 	var _building_model = _building_instance.get_child(0)
