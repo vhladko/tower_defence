@@ -2,13 +2,13 @@ extends Node3D
 class_name Building
 
 @export var bullet_prefab: PackedScene
-var bullet_speed: float = 5.0
+var bullet_speed: float = 30.0
 var bullet_damage: float = 10.0
 
 var is_ghost: bool = false
 
 var mobs_in_range = []
-var fire_rate: float = 1
+var fire_rate: float = 0.5
 
 func _ready() -> void:
 	var timer = Timer.new()

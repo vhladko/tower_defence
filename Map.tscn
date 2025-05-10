@@ -20,8 +20,8 @@ point_count = 10
 [sub_resource type="Resource" id="Resource_6f7pb"]
 script = ExtResource("6_vm4q1")
 mobs_prefab = ExtResource("7_ud676")
-delay_before_start = 20.0
-spawn_delay = 2.0
+delay_before_start = 10.0
+spawn_delay = 0.1
 spawn_amount = 10
 metadata/_custom_type_script = "uid://6xbfaxyuv8t0"
 
@@ -55,3 +55,5 @@ visible = false
 [node name="WaveManager" parent="." node_paths=PackedStringArray("mob_spawner") instance=ExtResource("5_0f2yp")]
 mob_spawner = NodePath("../mob_spawner")
 waves = Array[ExtResource("6_vm4q1")]([SubResource("Resource_6f7pb")])
+
+[connection signal="wave_spawn_finished" from="mob_spawner" to="WaveManager" method="_on_mob_spawner_wave_spawn_finished"]

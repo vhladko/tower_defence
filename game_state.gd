@@ -32,5 +32,5 @@ func set_user_hp(hp: int) -> void:
 		return
 	user_hp = hp
 	
-func add_gold(gold: float) -> void:
-	gold += gold
+func add_gold(gold_to_add: float) -> void:
+	gold += gold_to_add
