@@ -38,4 +38,5 @@ path = NodePath("../Path3D")
 mesh = SubResource("BoxMesh_3h1ab")
 
 [node name="Finish" parent="." instance=ExtResource("4_7if1s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7572, 0.776772, 1.24507)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.72735, 0.776772, 23.0283)
+visible = false

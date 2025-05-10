@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://p0qdox26gotr"]
+[gd_scene load_steps=13 format=3 uid="uid://p0qdox26gotr"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://vwt3pida7hlb" path="res://building/building_area.tscn" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://iiv2if27yq38" path="res://user_hp.gd" id="6_5vw27"]
 [ext_resource type="Script" uid="uid://bs484cuntdloo" path="res://button.gd" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://4jjefy57i3tl" path="res://Map.tscn" id="6_272bh"]
+[ext_resource type="Script" uid="uid://cll0d7dwl8rdj" path="res://panel.gd" id="7_5vw27"]
 [ext_resource type="PackedScene" uid="uid://t64bo4gpt0vo" path="res://building/building.tscn" id="7_272bh"]
+[ext_resource type="Script" uid="uid://fa6fsaqbtl7i" path="res://game_over.gd" id="7_kek77"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_272bh"]
 
@@ -45,9 +47,6 @@ building = ExtResource("7_272bh")
 building_icon = SubResource("CanvasTexture_272bh")
 main = NodePath("../..")
 
-[node name="Bulding" parent="." instance=ExtResource("7_272bh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.434, 0.686107, 2.86909)
-
 [node name="BuildingArea" parent="." instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3928, 1.94877, 8.01116)
 layers = 3
@@ -78,5 +77,46 @@ theme = SubResource("Theme_5vw27")
 show_percentage = false
 script = ExtResource("6_5vw27")
 
+[node name="GameOver" type="CanvasLayer" parent="."]
+process_mode = 2
+script = ExtResource("7_kek77")
+
+[node name="Panel" type="Panel" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_5vw27")
+
+[node name="Label" type="Label" parent="GameOver"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -171.0
+offset_top = 173.0
+offset_right = 171.0
+offset_bottom = 256.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "Game Over!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="GameOver"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -68.0
+offset_top = -185.0
+offset_right = 68.0
+offset_bottom = -154.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Retry"
+
 [connection signal="button_down" from="Control/Button" to="Control/Button" method="_on_button_down"]
 [connection signal="button_up" from="Control/Button" to="Control/Button" method="_on_button_up"]
+[connection signal="pressed" from="GameOver/Button" to="GameOver" method="_on_button_pressed"]
