@@ -15,6 +15,7 @@ var reward: float
 var speed: float
 
 func _ready() -> void:
+	print('Im mob')
 	max_hit_points = mob_data.health
 	current_hit_points = mob_data.health
 	reward = mob_data.reward
@@ -51,8 +52,8 @@ func move_by_path(delta: float) -> void:
 	pathFollow.progress += speed * delta
 	update_health_bar_position()
 
-func get_hit(damage: float):
-	current_hit_points -= damage
+func get_hit(damage_to_take: float):
+	current_hit_points -= damage_to_take
 	updateHealthBar()
 	if current_hit_points <= 0:
 		die()

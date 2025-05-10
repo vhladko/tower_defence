@@ -1,6 +1,7 @@
 extends Node
 
 signal game_over
+signal game_win
 
 enum UI_MODES {GAME, BUILDING}
 
@@ -18,9 +19,14 @@ func _game_over():
 	emit_signal("game_over")
 	_reset_state()
 
+func _game_win():
+	emit_signal("game_win")
+	_reset_state()
+
 func _reset_state():
 	ui_mode = UI_MODES.GAME
 	user_hp = 100
+	gold = 0
 
 func set_user_hp(hp: int) -> void:
 	if (hp <= 0):
@@ -34,3 +40,6 @@ func set_user_hp(hp: int) -> void:
 	
 func add_gold(gold_to_add: float) -> void:
 	gold += gold_to_add
+
+func waves_finished() -> void:
+	_game_win()

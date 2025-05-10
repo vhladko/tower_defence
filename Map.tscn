@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://4jjefy57i3tl"]
+[gd_scene load_steps=11 format=3 uid="uid://4jjefy57i3tl"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjr0vu6q0vswa" path="res://tiles.tres" id="1_gfjgm"]
 [ext_resource type="Script" uid="uid://cbx3htsbcmgh4" path="res://grid_map.gd" id="2_3h1ab"]
@@ -15,22 +15,20 @@ _data = {
 }
 point_count = 10
 
-[sub_resource type="BoxMesh" id="BoxMesh_3h1ab"]
-
-[sub_resource type="Resource" id="Resource_6f7pb"]
-script = ExtResource("6_vm4q1")
-mobs_prefab = ExtResource("7_ud676")
-delay_before_start = 10.0
-spawn_delay = 1.0
-spawn_amount = 10
-metadata/_custom_type_script = "uid://6xbfaxyuv8t0"
-
 [sub_resource type="Resource" id="Resource_0f2yp"]
 script = ExtResource("6_vm4q1")
 mobs_prefab = ExtResource("7_ud676")
 delay_before_start = 5.0
 spawn_delay = 1.0
 spawn_amount = 3
+metadata/_custom_type_script = "uid://6xbfaxyuv8t0"
+
+[sub_resource type="Resource" id="Resource_vm4q1"]
+script = ExtResource("6_vm4q1")
+mobs_prefab = ExtResource("7_ud676")
+delay_before_start = 0.5
+spawn_delay = 0.2
+spawn_amount = 2
 metadata/_custom_type_script = "uid://6xbfaxyuv8t0"
 
 [node name="Map" type="Node3D"]
@@ -53,15 +51,13 @@ curve = SubResource("Curve3D_3h1ab")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.85135, 0, 0)
 path = NodePath("../Path3D")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="mob_spawner"]
-mesh = SubResource("BoxMesh_3h1ab")
-
 [node name="Finish" parent="." instance=ExtResource("4_7if1s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.72735, 0.776772, 23.0283)
 visible = false
 
 [node name="WaveManager" parent="." node_paths=PackedStringArray("mob_spawner") instance=ExtResource("5_0f2yp")]
 mob_spawner = NodePath("../mob_spawner")
-waves = Array[ExtResource("6_vm4q1")]([SubResource("Resource_6f7pb"), SubResource("Resource_0f2yp")])
+waves = Array[ExtResource("6_vm4q1")]([SubResource("Resource_0f2yp"), SubResource("Resource_vm4q1")])
 
+[connection signal="child_order_changed" from="mob_spawner" to="WaveManager" method="_on_mob_spawner_child_order_changed"]
 [connection signal="wave_spawn_finished" from="mob_spawner" to="WaveManager" method="_on_mob_spawner_wave_spawn_finished"]

@@ -14,7 +14,6 @@ var count: int = 0;
 var delay_before_start_timer: Timer
 var timer: Timer
 
-
 func init_wave(wave_data: WaveData) -> void:
 	total = wave_data.spawn_amount
 	mob_prefab = wave_data.mobs_prefab
@@ -30,8 +29,6 @@ func init_wave(wave_data: WaveData) -> void:
 
 
 func start_spawn() -> void:
-	print("start spawn")
-	
 	timer = Timer.new()
 	timer.wait_time = spawn_delay
 	timer.autostart = true
