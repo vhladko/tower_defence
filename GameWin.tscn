@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cmlmpek2q6eem" path="res://game_win.gd" id="1_lq800"]
 
 [node name="GameWin" type="CanvasLayer"]
+process_mode = 2
 script = ExtResource("1_lq800")
 
 [node name="Panel" type="Panel" parent="."]
