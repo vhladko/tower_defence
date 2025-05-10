@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0e7ldukxunhy"]
+
+[ext_resource type="Script" uid="uid://c8640borlafwr" path="res://resources/mob/base_mob.gd" id="1_4kc14"]
+[ext_resource type="PackedScene" uid="uid://d0n1t7k75rbil" path="res://addons/health_bar/health_bar.tscn" id="2_uaxkl"]
+[ext_resource type="Script" uid="uid://dqj4v33r2al6t" path="res://resources/mob/mob_data.gd" id="3_uaxkl"]
+
+[sub_resource type="Resource" id="Resource_ibsro"]
+script = ExtResource("3_uaxkl")
+health = 100.0
+speed = 2.0
+reward = 10.0
+metadata/_custom_type_script = "uid://dqj4v33r2al6t"
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wnken"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_go2bn"]
+
+[node name="Default" type="CharacterBody3D"]
+script = ExtResource("1_4kc14")
+healthBarPrefab = ExtResource("2_uaxkl")
+mob_data = SubResource("Resource_ibsro")
+metadata/_custom_type_script = "uid://c8640borlafwr"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_wnken")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_go2bn")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://4jjefy57i3tl"]
+[gd_scene load_steps=7 format=3 uid="uid://4jjefy57i3tl"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjr0vu6q0vswa" path="res://tiles.tres" id="1_gfjgm"]
-[ext_resource type="Script" uid="uid://cbx3htsbcmgh4" path="res://grid_map.gd" id="2_3h1ab"]
+[ext_resource type="Script" path="res://grid_map.gd" id="2_3h1ab"]
 [ext_resource type="PackedScene" uid="uid://bnh8qr14dp22m" path="res://addons/mob_spawner/mob_spawner.tscn" id="2_3vi7k"]
+[ext_resource type="PackedScene" uid="uid://cyylfh2jvcqj4" path="res://scenes/mob/mob.tscn" id="4_7if1s"]
 
 [sub_resource type="Curve3D" id="Curve3D_3h1ab"]
 _data = {
@@ -31,6 +32,7 @@ curve = SubResource("Curve3D_3h1ab")
 
 [node name="mob_spawner" parent="." node_paths=PackedStringArray("path") instance=ExtResource("2_3vi7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.85135, 0, 0)
+mob_prefab = ExtResource("4_7if1s")
 path = NodePath("../Path3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="mob_spawner"]

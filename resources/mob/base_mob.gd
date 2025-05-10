@@ -1,38 +1,42 @@
 extends CharacterBody3D
-class_name Mob
+class_name BaseMob
 
 @export var healthBarPrefab: PackedScene;
-
+@export var mob_data: MobData
 var healthBar: Node2D;
 
-var path: Path3D
 var pathFollow: PathFollow3D
 
-var maxHitPoints: float = 100;
-var currentHitPoints: float = 60;
+var max_hit_points: float;
+var current_hit_points: float;
 
-var killCost: float;
+var reward: float
 var speed: float
-var size: float;
 
 func _ready() -> void:
+	max_hit_points = mob_data.health
+	current_hit_points = mob_data.health
+	reward = mob_data.reward
+	speed = mob_data.speed
+	
+	healthBar = healthBarPrefab.instantiate()
+	healthBar.maxHealth = max_hit_points
+	add_child(healthBar)
+	update_health_bar_position()
+
+func init_path(path: Path3D) -> void:
 	pathFollow = PathFollow3D.new()
 	path.add_child(pathFollow)
 	global_transform.origin = pathFollow.global_transform.origin
-	
-	healthBar = healthBarPrefab.instantiate()
-	healthBar.maxHealth = maxHitPoints
-	add_child(healthBar)
-	updateHealthBarPosition()
-	
+	update_health_bar_position()
 
-func updateHealthBarPosition() -> void:
+func update_health_bar_position() -> void:
 	var camera = get_viewport().get_camera_3d()
 	var screen_pos = camera.unproject_position(global_transform.origin + Vector3(0, 2, 0)) 
 	healthBar.global_position = screen_pos
 
 func updateHealthBar() -> void:
-	healthBar.set_health(currentHitPoints);
+	healthBar.set_health(current_hit_points);
 
 func _physics_process(delta: float) -> void:
 	move_by_path(delta)
@@ -47,12 +51,12 @@ func checkProgress() -> void:
 func move_by_path(delta: float) -> void:
 	global_transform.origin = pathFollow.global_transform.origin
 	pathFollow.progress += speed * delta
-	updateHealthBarPosition()
+	update_health_bar_position()
 
 func get_hit(damage: float):
-	currentHitPoints -= damage
+	current_hit_points -= damage
 	updateHealthBar()
-	if currentHitPoints <= 0:
+	if current_hit_points <= 0:
 		die()
 	
 func die() ->void:
