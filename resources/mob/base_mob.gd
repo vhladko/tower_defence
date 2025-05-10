@@ -19,6 +19,9 @@ func _ready() -> void:
 	current_hit_points = mob_data.health
 	reward = mob_data.reward
 	speed = mob_data.speed
+	damage = mob_data.damage
+	
+	global_transform.origin = pathFollow.global_transform.origin
 	
 	healthBar = healthBarPrefab.instantiate()
 	healthBar.maxHealth = max_hit_points
@@ -28,8 +31,6 @@ func _ready() -> void:
 func init_path(path: Path3D) -> void:
 	pathFollow = PathFollow3D.new()
 	path.add_child(pathFollow)
-	global_transform.origin = pathFollow.global_transform.origin
-	update_health_bar_position()
 
 func update_health_bar_position() -> void:
 	var camera = get_viewport().get_camera_3d()

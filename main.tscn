@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://vwt3pida7hlb" path="res://building/building_area.tscn" id="2_0xm2m"]
-[ext_resource type="Script" uid="uid://iiv2if27yq38" path="res://user_hp.gd" id="6_5vw27"]
+[ext_resource type="Script" path="res://user_hp.gd" id="6_5vw27"]
 [ext_resource type="Script" uid="uid://bs484cuntdloo" path="res://button.gd" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://4jjefy57i3tl" path="res://Map.tscn" id="6_272bh"]
-[ext_resource type="Script" uid="uid://cll0d7dwl8rdj" path="res://panel.gd" id="7_5vw27"]
+[ext_resource type="Script" path="res://panel.gd" id="7_5vw27"]
 [ext_resource type="PackedScene" uid="uid://t64bo4gpt0vo" path="res://building/building.tscn" id="7_272bh"]
-[ext_resource type="Script" uid="uid://fa6fsaqbtl7i" path="res://game_over.gd" id="7_kek77"]
+[ext_resource type="Script" path="res://game_over.gd" id="7_kek77"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_272bh"]
 
