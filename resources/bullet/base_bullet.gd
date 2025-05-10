@@ -10,6 +10,7 @@ var target: Node3D
 func _ready() -> void:
 	speed = bullet_data.speed
 	damage = bullet_data.damage
+	connect("body_entered", _on_body_entered)
 
 func _physics_process(delta: float) -> void:
 	if not is_instance_valid(target):

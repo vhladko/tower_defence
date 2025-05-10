@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdqsos0nsjqyf"]
+
+[ext_resource type="Script" uid="uid://cg46dwyej81qj" path="res://scenes/bullet/splash/splash_bullet.gd" id="1_pjdgj"]
+[ext_resource type="Script" uid="uid://c12bs55h5gtcx" path="res://resources/bullet/bullet_data.gd" id="2_mowhy"]
+
+[sub_resource type="Resource" id="Resource_8i0ki"]
+script = ExtResource("2_mowhy")
+speed = 10.0
+damage = 10.0
+type = ""
+metadata/_custom_type_script = "uid://c12bs55h5gtcx"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mowhy"]
+albedo_color = Color(0.899152, 0.918185, 0.248344, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_mowhy"]
+material = SubResource("StandardMaterial3D_mowhy")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8i0ki"]
+radius = 0.3
+
+[node name="SplashBullet" type="Area3D"]
+script = ExtResource("1_pjdgj")
+splash_radius = 5.0
+bullet_data = SubResource("Resource_8i0ki")
+metadata/_custom_type_script = "uid://kfym3qx8hfdr"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_mowhy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8i0ki")
