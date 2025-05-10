@@ -16,7 +16,6 @@ func create_splash_area() -> Area3D:
 	
 	var collision_shape = CollisionShape3D.new()
 	var sphere_shape = SphereShape3D.new()
-	print(splash_radius)
 	sphere_shape.radius = splash_radius
 	collision_shape.shape = sphere_shape
 	

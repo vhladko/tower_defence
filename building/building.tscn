@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://t64bo4gpt0vo"]
 
 [ext_resource type="Script" uid="uid://ctknn2hb273ot" path="res://building/building.gd" id="1_pi4mk"]
-[ext_resource type="PackedScene" path="res://scenes/bullet/default_bullet.tscn" id="2_vgp2u"]
+[ext_resource type="PackedScene" uid="uid://c4j1wx8jfaikd" path="res://scenes/bullet/default_bullet.tscn" id="2_vgp2u"]
 [ext_resource type="Script" uid="uid://bshewrcjb2cd1" path="res://resources/building/building_data.gd" id="3_s5ctk"]
 [ext_resource type="PackedScene" uid="uid://blgx61sket1mj" path="res://assets/tower-round-build-d.glb" id="4_s5ctk"]
 

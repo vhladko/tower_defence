@@ -18,9 +18,9 @@ point_count = 10
 [sub_resource type="Resource" id="Resource_0f2yp"]
 script = ExtResource("6_vm4q1")
 mobs_prefab = ExtResource("7_ud676")
-delay_before_start = 5.0
-spawn_delay = 1.0
-spawn_amount = 3
+delay_before_start = 2.0
+spawn_delay = 0.5
+spawn_amount = 40
 metadata/_custom_type_script = "uid://6xbfaxyuv8t0"
 
 [sub_resource type="Resource" id="Resource_vm4q1"]
