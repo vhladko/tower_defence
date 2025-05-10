@@ -14,5 +14,5 @@ func attack() -> void:
 			var bullet = bullet_prefab.instantiate()
 			if bullet is BaseBullet:
 				bullet.set_target(target)
-				bullet.global_transform.origin = bullet.global_transform.origin + Vector3(0, 3, 0)
 				add_child(bullet)
+				bullet.global_transform.origin = bullet.global_transform.origin + Vector3(0, 3, 0)

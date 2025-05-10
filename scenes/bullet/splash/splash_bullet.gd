@@ -8,8 +8,8 @@ var splash_area: Area3D
 func _ready() -> void:
 	super()
 	splash_area = create_splash_area()
-	splash_area.global_transform.origin = global_transform.origin
 	add_child(splash_area)
+	splash_area.global_transform.origin = global_transform.origin
 
 func create_splash_area() -> Area3D:
 	var splash_area = Area3D.new()

@@ -34,8 +34,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func place_building():
 	if _can_place:
 		var new_build = _building.instantiate()
-		new_build.global_position = _last_valid_location
 		_grid.add_child(new_build)
+		new_build.global_position = _last_valid_location
 		_grid.place_in_cell(_last_valid_local_location)
 		State.remove_gold(_building_instance.building_data.cost)
 
