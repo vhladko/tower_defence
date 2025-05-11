@@ -18,7 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 State="*res://game_state.gd"
-BuildManager="*res://scenes/build_manager/build_manager.gd"
+BuildManager="*res://globals/build_manager.gd"
+AudioManager="*res://globals/audio_manager.gd"
 
 [global_group]
 

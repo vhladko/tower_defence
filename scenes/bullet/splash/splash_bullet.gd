@@ -10,6 +10,7 @@ func _ready() -> void:
 	splash_area = create_splash_area()
 	add_child(splash_area)
 	splash_area.global_transform.origin = global_transform.origin
+	
 
 func create_splash_area() -> Area3D:
 	var splash_area = Area3D.new()
@@ -32,14 +33,15 @@ func create_splash_area() -> Area3D:
 func _physics_process(delta: float) -> void:
 	super(delta)
 	splash_area.global_transform.origin = global_transform.origin
-	
 
 func check_is_mob(body: Node3D) -> bool:
 	return is_instance_valid(body) && body.has_method("get_hit")
 
 func splash_attack() -> void:
-		for body in mobs_to_hit:
-			body.get_hit(damage);
+	AudioManager.play_sound("res://audio/splash_bullet.mp3")
+	for body in mobs_to_hit:
+		body.get_hit(damage);
+		
 
 func _on_splash_area_entered(body: Node3D):
 	if check_is_mob(body):
