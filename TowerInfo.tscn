@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://e421rh620mc"]
+
+[ext_resource type="Script" uid="uid://cp2k13e2vl1ib" path="res://tower_info.gd" id="1_1jmgw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0qsy"]
+bg_color = Color(0.862522, 0.862522, 0.862522, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0728426, 0.0728427, 0.0728426, 1)
+
+[node name="TowerInfo" type="Panel"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -207.0
+offset_bottom = 70.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r0qsy")
+script = ExtResource("1_1jmgw")
+
+[node name="Damage" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 48.0
+offset_right = 70.0
+offset_bottom = 71.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Damage: "
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 95.0
+offset_bottom = 29.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Name: "
+
+[node name="Cost" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 27.0
+offset_right = 45.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Cost: "

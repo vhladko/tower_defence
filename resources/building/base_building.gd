@@ -6,6 +6,7 @@ class_name BaseBuilding
 var bullet_prefab: PackedScene
 var fire_rate: float
 var _is_selected: bool = false
+var _selection: MeshInstance3D
 var _cam: Camera3D
 
 var is_ghost: bool = false
@@ -13,6 +14,8 @@ var mobs_in_range = []
 
 func _ready() -> void:
 	_cam = get_viewport().get_camera_3d()
+	create_selection()
+	_selection.visible = false
 	bullet_prefab = building_data.bullet_prefab
 	fire_rate = building_data.fire_rate
 	var attack_range = create_attack_range(building_data.attack_range_radius)
@@ -38,7 +41,15 @@ func _input(event):
 		if ray_result.size() > 0:
 			var col = ray_result.get('collider')
 			if col is StaticBody3D:
-				_is_selected = is_ancestor_of(col)
+				_is_selected = is_ancestor_of(col) and !is_ghost
+				_selection.visible = _is_selected
+				if _is_selected:
+					var bullet: BaseBullet = bullet_prefab.instantiate()
+					TowerInfo.select_tower(building_data.cost, bullet.bullet_data.damage, name)
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+		_is_selected = false
+		_selection.visible = false
+		TowerInfo.unselect_tower()
 
 
 func _on_timer_timeout():
@@ -102,3 +113,14 @@ func check_selection():
 		var col = ray_result.get('collider')
 		if col is StaticBody3D:
 			_is_selected = is_ancestor_of(col)
+
+func create_selection():
+	_selection = MeshInstance3D.new()
+	var material = StandardMaterial3D.new()
+	material.albedo_color = Color(0.6, 0.9, 0, 1)
+	
+	var plane_mesh := PlaneMesh.new()
+	plane_mesh.surface_set_material(0, material)
+	_selection.mesh = plane_mesh
+	
+	add_child(_selection)

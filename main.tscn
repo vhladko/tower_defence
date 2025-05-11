@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://p0qdox26gotr"]
+[gd_scene load_steps=15 format=3 uid="uid://p0qdox26gotr"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://vwt3pida7hlb" path="res://building/building_area.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dlr83bq74u2dg" path="res://scenes/towers/default/default_tower.tscn" id="3_efxa6"]
 [ext_resource type="Script" uid="uid://iiv2if27yq38" path="res://user_hp.gd" id="6_5vw27"]
 [ext_resource type="Script" uid="uid://bs484cuntdloo" path="res://button.gd" id="6_7mycd"]
@@ -61,11 +60,8 @@ script = ExtResource("6_7mycd")
 building = ExtResource("9_kek77")
 building_icon = SubResource("CanvasTexture_272bh")
 
-[node name="BuildingArea" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3928, 1.94877, 8.01116)
-layers = 3
-
 [node name="Map" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="Control2" type="Control" parent="."]
 layout_mode = 3
@@ -106,8 +102,10 @@ text = "Gold"
 script = ExtResource("8_4c57u")
 
 [node name="GameOver" parent="." instance=ExtResource("7_5vw27")]
+visible = false
 
 [node name="GameWin" parent="." instance=ExtResource("8_5vw27")]
+visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_efxa6")

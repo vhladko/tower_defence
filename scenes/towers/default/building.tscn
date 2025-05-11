@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c58wt45axem3"]
-
-[ext_resource type="PackedScene" uid="uid://blgx61sket1mj" path="res://assets/tower-round-build-d.glb" id="4_s5ctk"]
-
-[node name="DefaultBuilding" type="Node3D"]
-metadata/_custom_type_script = "uid://3u6b2fupfwqu"
-
-[node name="tower-round-build-d" parent="." instance=ExtResource("4_s5ctk")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

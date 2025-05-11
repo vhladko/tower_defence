@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 State="*res://game_state.gd"
 BuildManager="*res://globals/build_manager.gd"
 AudioManager="*res://globals/audio_manager.gd"
+TowerInfo="*res://TowerInfo.tscn"
 
 [global_group]
 
