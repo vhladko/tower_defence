@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://p0qdox26gotr"]
+[gd_scene load_steps=16 format=3 uid="uid://p0qdox26gotr"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://vwt3pida7hlb" path="res://building/building_area.tscn" id="2_0xm2m"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://duujh3366cfen" path="res://gold.gd" id="8_4c57u"]
 [ext_resource type="PackedScene" uid="uid://dbk6septufuxv" path="res://GameWin.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dcdqdc4uedhly" path="res://scenes/towers/multiple_tower/multiple_tower.tscn" id="9_kek77"]
+[ext_resource type="AudioStream" uid="uid://cyeql30apqbp1" path="res://assets/audio/main.mp3" id="11_efxa6"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_272bh"]
 
@@ -107,6 +108,12 @@ script = ExtResource("8_4c57u")
 [node name="GameOver" parent="." instance=ExtResource("7_5vw27")]
 
 [node name="GameWin" parent="." instance=ExtResource("8_5vw27")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_efxa6")
+volume_db = -10.351
+autoplay = true
+parameters/looping = true
 
 [connection signal="button_down" from="Control/Button" to="Control/Button" method="_on_button_down"]
 [connection signal="button_up" from="Control/Button" to="Control/Button" method="_on_button_up"]
