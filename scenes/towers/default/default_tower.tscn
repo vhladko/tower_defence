@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://dlr83bq74u2dg"]
+
+[ext_resource type="Script" uid="uid://3u6b2fupfwqu" path="res://resources/building/base_building.gd" id="1_mvhpn"]
+[ext_resource type="PackedScene" uid="uid://blgx61sket1mj" path="res://assets/tower-round-build-d.glb" id="2_0cfkf"]
+[ext_resource type="PackedScene" uid="uid://c4j1wx8jfaikd" path="res://scenes/bullet/default_bullet.tscn" id="2_2vjqv"]
+[ext_resource type="Script" uid="uid://bshewrcjb2cd1" path="res://resources/building/building_data.gd" id="3_glk8m"]
+
+[sub_resource type="Resource" id="Resource_8iyk0"]
+script = ExtResource("3_glk8m")
+fire_rate = 0.5
+bullet_prefab = ExtResource("2_2vjqv")
+attack_range_radius = 5.0
+cost = 10.0
+metadata/_custom_type_script = "uid://bshewrcjb2cd1"
+
+[node name="DefaultTower" type="Node3D"]
+script = ExtResource("1_mvhpn")
+building_data = SubResource("Resource_8iyk0")
+metadata/_custom_type_script = "uid://3u6b2fupfwqu"
+
+[node name="tower-round-build-d" parent="." instance=ExtResource("2_0cfkf")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://vwt3pida7hlb" path="res://building/building_area.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dlr83bq74u2dg" path="res://scenes/towers/default/default_tower.tscn" id="3_efxa6"]
 [ext_resource type="Script" uid="uid://iiv2if27yq38" path="res://user_hp.gd" id="6_5vw27"]
 [ext_resource type="Script" uid="uid://bs484cuntdloo" path="res://button.gd" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://4jjefy57i3tl" path="res://Map.tscn" id="6_272bh"]
 [ext_resource type="PackedScene" uid="uid://ck68t3usg454t" path="res://GameOver.tscn" id="7_5vw27"]
-[ext_resource type="PackedScene" uid="uid://t64bo4gpt0vo" path="res://building/building.tscn" id="7_272bh"]
 [ext_resource type="Script" uid="uid://duujh3366cfen" path="res://gold.gd" id="8_4c57u"]
 [ext_resource type="PackedScene" uid="uid://dbk6septufuxv" path="res://GameWin.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dcdqdc4uedhly" path="res://scenes/towers/multiple_tower/multiple_tower.tscn" id="9_kek77"]
@@ -47,7 +47,7 @@ offset_right = 160.0
 offset_bottom = 49.0
 text = "Single Tower"
 script = ExtResource("6_7mycd")
-building = ExtResource("7_272bh")
+building = ExtResource("3_efxa6")
 building_icon = SubResource("CanvasTexture_272bh")
 
 [node name="Button2" type="Button" parent="Control"]
