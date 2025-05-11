@@ -61,3 +61,4 @@ waves = Array[ExtResource("6_vm4q1")]([SubResource("Resource_0f2yp"), SubResourc
 
 [connection signal="child_order_changed" from="mob_spawner" to="WaveManager" method="_on_mob_spawner_child_order_changed"]
 [connection signal="wave_spawn_finished" from="mob_spawner" to="WaveManager" method="_on_mob_spawner_wave_spawn_finished"]
+[connection signal="wave_spawn_start" from="mob_spawner" to="WaveManager" method="_on_mob_spawner_wave_spawn_start"]
