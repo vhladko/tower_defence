@@ -8,6 +8,7 @@ script = ExtResource("2_mowhy")
 speed = 10.0
 damage = 10.0
 type = ""
+particles_lifetime = 0.0
 metadata/_custom_type_script = "uid://c12bs55h5gtcx"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mowhy"]

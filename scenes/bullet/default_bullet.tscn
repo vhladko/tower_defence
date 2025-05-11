@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4j1wx8jfaikd"]
+[gd_scene load_steps=8 format=3 uid="uid://c4j1wx8jfaikd"]
 
 [ext_resource type="Script" uid="uid://kfym3qx8hfdr" path="res://resources/bullet/base_bullet.gd" id="1_mujsy"]
+[ext_resource type="PackedScene" uid="uid://bj4k3p7rv75g8" path="res://scenes/effects/explosion.tscn" id="2_0bic6"]
 [ext_resource type="Script" uid="uid://c12bs55h5gtcx" path="res://resources/bullet/bullet_data.gd" id="2_peggt"]
 
 [sub_resource type="Resource" id="Resource_c6pnf"]
@@ -8,6 +9,8 @@ script = ExtResource("2_peggt")
 speed = 10.0
 damage = 10.0
 type = ""
+particles_prefab = ExtResource("2_0bic6")
+particles_lifetime = 0.0
 metadata/_custom_type_script = "uid://c12bs55h5gtcx"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7c8un"]
