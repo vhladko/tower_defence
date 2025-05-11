@@ -41,7 +41,9 @@ func place_building():
 
 func cancel_building():
 	State.set_ui_mode(State.UI_MODES.GAME)
-	_building_instance.queue_free()
+	if(_building_instance):
+		_building_instance.queue_free()
+	_can_place = false
 
 func _physics_process(_delta):
 	if State.get_ui_mode() == State.UI_MODES.BUILDING:

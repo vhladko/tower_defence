@@ -36,6 +36,8 @@ _subresources={
 "nodes": {
 "PATH:tower-round-build-d": {
 "generate/physics": true,
+"mesh_instance/layers": 9,
+"physics/layer": 9,
 "physics/shape_type": 1
 }
 }
