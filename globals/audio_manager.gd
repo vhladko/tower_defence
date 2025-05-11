@@ -11,11 +11,10 @@ func play_sound(sound_path: String, volume: float = 1.0, pitch: float = 1.0) -> 
 	player.play()
 	
 	
-	player.connect("finished", _on_sound_finished)
+	player.finished.connect(_on_sound_finished.bind(player))
 	sound_players.append(player)
 
-func _on_sound_finished(player: AudioStreamPlayer3D) -> void:
-	print(player)
+func _on_sound_finished(player: AudioStreamPlayer3D):
 	if player in sound_players:
 		sound_players.erase(player)
 		player.queue_free()
